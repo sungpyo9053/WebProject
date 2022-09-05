@@ -25,7 +25,7 @@ import java.util.Objects;
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 
-public class ArticleComment {
+public class ArticleComment extends AuditingField{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // primary key 를 생성해주는 기능
@@ -34,10 +34,6 @@ public class ArticleComment {
     @Setter @ManyToOne(optional = false) private Article article; // 댓글에서 -> 게시글로 연관관계 맵핑
     @Setter @Column(nullable = false, length = 500) private String content;
 
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
-    @CreatedBy @Column(nullable = false, length = 1000) private String createdBy;
-    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt;
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
     protected ArticleComment() {}
 

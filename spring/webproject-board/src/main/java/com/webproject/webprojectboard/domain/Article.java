@@ -28,9 +28,9 @@ import java.util.Set;
 
 })
 
-@EntityListeners(AuditingEntityListener.class)
+
 @Entity
-public class Article {
+public class Article extends AuditingField{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,11 +44,6 @@ public class Article {
     @OneToMany(mappedBy = "article" , cascade = CascadeType.ALL)
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>(); // 중복을 허용하지 않고 컬렉션으로 보겠다
 
-
-    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt;
-    @CreatedBy @Column(nullable = false, length = 1000) private String createdBy;
-    @LastModifiedDate  @Column(nullable = false) private LocalDateTime modifiedAt;
-    @LastModifiedBy @Column(nullable = false, length = 100) private String modifiedBy;
 
     protected Article() {}
 
