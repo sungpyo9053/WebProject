@@ -6,5 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/articles")
 @Controller
-public class ArticleController {
+public class ArticleController
+{
+
 }
